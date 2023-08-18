@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Splash from "./src/screens/Splash";
 
 export default function App() {
+  const [loaded] = useFonts({
+    PoppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
+    DMSansMedium: require("./assets/fonts/DMSans-Medium.ttf"),
+    DmSansBold: require("./assets/fonts/DMSans-Bold.ttf"),
+  });
+  if (!loaded) return null;
+
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName="Splash"
+      >
+        <Stack.Screen name="Splash" component={Splash} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
