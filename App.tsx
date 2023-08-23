@@ -2,6 +2,7 @@ import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Splash from "./src/screens/Splash";
+import Login from "./src/screens/onboarding/Login";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -22,6 +23,7 @@ export default function App() {
         initialRouteName="Splash"
       >
         <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );
