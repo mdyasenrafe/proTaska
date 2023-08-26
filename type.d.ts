@@ -12,3 +12,9 @@ interface TypographyType {
   medium?: string;
   bold?: string;
 }
+
+interface errorType {
+  error: boolean;
+  message: string;
+  type: string;
+}

@@ -22,12 +22,6 @@ import { ValidationEmail } from "../../utils/ValidationEmail";
 import { ValidationPassword } from "../../utils/ValidationPassword";
 import { ValidationConfrimPassword } from "../../utils/ValidationConfrimPassword";
 
-interface errorType {
-  error: boolean;
-  message: string;
-  type: string;
-}
-
 export default function Signup({
   navigation,
 }: {
@@ -157,16 +151,13 @@ export default function Signup({
     if (checkName.error) {
       updateError(true, "name", checkName.message);
       return;
-    }
-    if (checkEmail.error) {
+    } else if (checkEmail.error) {
       updateError(true, "email", checkEmail.message);
       return;
-    }
-    if (checkPassword.error) {
+    } else if (checkPassword.error) {
       updateError(true, "password", checkPassword.message);
       return;
-    }
-    if (checkConfirmPassword.error) {
+    } else if (checkConfirmPassword.error) {
       updateError(true, "confirmPassword", checkConfirmPassword.message);
       return;
     }

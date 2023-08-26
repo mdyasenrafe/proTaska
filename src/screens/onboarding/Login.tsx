@@ -17,18 +17,32 @@ export default function Login({
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordEye, setPasswordEye] = useState<boolean>(true);
-  const [error, setError] = useState<string | undefined>();
+  const [error, setError] = useState<errorType>({
+    error: false,
+    message: "",
+    type: "",
+  });
+
+  const updateError = (status: boolean, type: string, message: string) => {
+    if (message !== "") alert(message);
+    setError({
+      error: status,
+      message: message,
+      type: type,
+    });
+    return;
+  };
 
   const handleLogin = () => {
-    // if (!ValidationEmail(email, setEmail, setError)) {
-    //   console.log("error", error);
-    //   console.log("email is not valid");
-    // } else if (!ValidationPassword(password, setPassword, setError)) {
-    //   console.log("error", error);
-    //   console.log("password is not valid");
-    // } else {
-    //   console.log("success");
-    // }
+    const checkEmail = ValidationEmail(email);
+    const checkPassword = ValidationPassword(password);
+    if (checkEmail.error) {
+      updateError(true, "email", checkEmail.message);
+      return;
+    } else if (checkPassword.error) {
+      updateError(true, "password", checkPassword.message);
+      return;
+    }
   };
 
   return (
@@ -50,6 +64,9 @@ export default function Login({
               setEmail(e);
             }}
             returnKeyType="next"
+            style={{
+              borderColor: error.type === "email" ? "red" : "lightgrey",
+            }}
           />
           <CutstomInput
             label="Password"
@@ -73,11 +90,15 @@ export default function Login({
               </TouchableOpacity>
             }
             secureTextEntry={passwordEye}
+            style={{
+              borderColor:
+                error.type === "confirmPassword" ? "red" : "lightgrey",
+            }}
           />
         </View>
         {error && (
           <CustomText preset="p3" style={fileStyles.error}>
-            {error}
+            {error.message}
           </CustomText>
         )}
         <Button title="Sign in" onPress={handleLogin} />
