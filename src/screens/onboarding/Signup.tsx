@@ -148,6 +148,7 @@ export default function Signup({
       password,
       confirmPassword
     );
+    navigation.navigate("Verification");
     if (checkName.error) {
       updateError(true, "name", checkName.message);
       return;
@@ -224,10 +225,5 @@ const styles = StyleSheet.create({
   error: {
     color: colors.red,
     marginBottom: 8,
-  },
-  dont_have_acc: {
-    textAlign: "center",
-    color: colors.gray,
-    marginTop: 30,
   },
 });
