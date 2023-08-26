@@ -16,19 +16,19 @@ export default function Login({
 }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [passwordEye, setPasswordEye] = useState<boolean>(false);
+  const [passwordEye, setPasswordEye] = useState<boolean>(true);
   const [error, setError] = useState<string | undefined>();
 
   const handleLogin = () => {
-    if (!ValidationEmail(email, setEmail, setError)) {
-      console.log("error", error);
-      console.log("email is not valid");
-    } else if (!ValidationPassword(password, setPassword, setError)) {
-      console.log("error", error);
-      console.log("password is not valid");
-    } else {
-      console.log("success");
-    }
+    // if (!ValidationEmail(email, setEmail, setError)) {
+    //   console.log("error", error);
+    //   console.log("email is not valid");
+    // } else if (!ValidationPassword(password, setPassword, setError)) {
+    //   console.log("error", error);
+    //   console.log("password is not valid");
+    // } else {
+    //   console.log("success");
+    // }
   };
 
   return (
@@ -54,11 +54,11 @@ export default function Login({
           <CutstomInput
             label="Password"
             placeholder="type your password"
-            showPassword={passwordEye}
             onChangeText={(e: any) => {
               setPassword(e);
             }}
             returnKeyType="done"
+            showPassword={true}
             showPasswordComponent={
               <TouchableOpacity
                 onPress={() => {
@@ -66,12 +66,13 @@ export default function Login({
                 }}
               >
                 <Feather
-                  name={passwordEye ? "eye" : "eye-off"}
+                  name={passwordEye ? "eye-off" : "eye"}
                   size={20}
                   color="black"
                 />
               </TouchableOpacity>
             }
+            secureTextEntry={passwordEye}
           />
         </View>
         {error && (

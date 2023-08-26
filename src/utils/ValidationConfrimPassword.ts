@@ -1,13 +1,22 @@
 import React from "react";
 
 export const ValidationConfrimPassword = (
-  e: string,
   passwod: string,
-  setPassword: React.Dispatch<React.SetStateAction<string>>,
-  setError: React.Dispatch<React.SetStateAction<string | undefined>>
+  confirmPassword: string
 ) => {
-  setPassword(e);
-  if (e.length == 0) setError("Confirm password is required");
-  else if (e !== passwod) setError("Password does not match");
-  else setError(undefined);
+  if (confirmPassword.length === 0)
+    return {
+      error: true,
+      message: "Confirm Password Field is required",
+    };
+  else if (passwod !== confirmPassword)
+    return {
+      error: true,
+      message: "Password and Confirm Password must be the same",
+    };
+  else
+    return {
+      error: false,
+      message: "",
+    };
 };

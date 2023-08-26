@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Splash from "./src/screens/Splash";
 import Login from "./src/screens/onboarding/Login";
+import Signup from "./src/screens/onboarding/Signup";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -24,6 +25,7 @@ export default function App() {
       >
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Signup" component={Signup} />
       </Stack.Navigator>
     </NavigationContainer>
   );
