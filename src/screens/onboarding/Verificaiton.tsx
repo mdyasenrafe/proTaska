@@ -25,17 +25,29 @@ export default function Verificaiton({
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.heading_area}>
-        <Feather
-          name="arrow-left"
-          size={24}
-          color={colors.primary}
-          onPress={() => navigation.goBack()}
-          style={{ marginBottom: 8 }}
-        />
-        <CustomText style={styles.heading_text} preset="h3">
-          Verification
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Feather
+            name="arrow-left"
+            size={24}
+            color={colors.primary}
+            onPress={() => navigation.goBack()}
+            style={{ marginBottom: 8, marginRight: 8 }}
+          />
+          <CustomText style={styles.heading_text} preset="h3">
+            Verification
+          </CustomText>
+        </View>
+        <CustomText style={{ marginBottom: 24, color: "grey" }} preset="p4">
+          Enter the 4-digit code sent to your email. If you didn’t receive a
+          code, check your spam folder or click Resend.
         </CustomText>
       </View>
+
       <CutstomInput
         label="Email"
         placeholder="Type your email"
@@ -67,7 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
   },
-  heading_area: { marginBottom: 24 },
+  heading_area: { marginBottom: 16 },
   heading_text: {
     marginBottom: 8,
   },
