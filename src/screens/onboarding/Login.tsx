@@ -95,6 +95,18 @@ export default function Login({
                 error.type === "confirmPassword" ? "red" : "lightgrey",
             }}
           />
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ForgetPassword")}
+            >
+              <CustomText
+                preset="p4"
+                style={{ textAlign: "right", color: colors.primary }}
+              >
+                Forget Password?
+              </CustomText>
+            </TouchableOpacity>
+          </View>
         </View>
         {error && (
           <CustomText preset="p3" style={fileStyles.error}>

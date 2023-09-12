@@ -49,8 +49,8 @@ export default function Verificaiton({
       </View>
 
       <CutstomInput
-        label="Email"
-        placeholder="Type your email"
+        label="Code"
+        placeholder="Type your code"
         autoCapitalize="none"
         keyboardType="number-pad"
         onChangeText={(e) => {
